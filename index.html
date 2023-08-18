@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Не двигай мышкой</title>
+	<style>
+		#msg {
+			position: absolute;
+		}
+		body {
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+	<h1 id="msg"></h1>
+<script>
+const matyuki = [
+	"бля",
+	"епта",
+	"хуйло",
+	"пидор",
+	"ебло",
+	"сука",
+	"пиздец",
+	"еблан",
+	"долбоеб",
+	"мудила",
+	"еблище",
+	"страдалец"
+]
+document.addEventListener('mousemove', (e) => {
+	[x, y] = [e.clientX, e.clientY]
+	
+	msgBox = document.getElementById('msg')
+	msgBox.innerHTML = "Не двигай мышкой, " + getMatyuk(matyuki)
+	msgBox.style.color = '#' + Math.floor(8777215 + Math.random()*8000000).toString(16)
+	document.querySelector('body').style.background = '#' + Math.floor(Math.random()*8777215).toString(16)
+
+	width = msgBox.offsetWidth
+	msgBox.style.top = y - 70 + 'px'
+	msgBox.style.left = x - width / 2 + 'px'
+	document.title = getMatyuk(matyuki)
+})
+
+function getMatyuk(words) {
+	const amount = words.length
+	const index = Math.floor(Math.random() * amount)
+	return words[index]
+}
+</script>
+</body>
+</html>
